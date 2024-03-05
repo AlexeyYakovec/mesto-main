@@ -46,6 +46,9 @@ function addPhoto(name, link) {
   photoSrc.alt = name;
   photoSrc.src = link;
 
+  deleteButton.addEventListener("click", handleDeletePhoto);
+  likeButton.addEventListener("click", handleLike);
+
   return newPhoto;
 }
 
@@ -54,3 +57,11 @@ initialCards.forEach((item) => {
   const newCard = addPhoto(item.name, item.link);
   photoContainer.append(newCard);
 });
+
+function handleDeletePhoto(e) {
+  e.target.closest(".photo-grid__item").remove();
+}
+
+function handleLike(e) {
+  e.target.classList.toggle("photo-grid__like_active");
+}

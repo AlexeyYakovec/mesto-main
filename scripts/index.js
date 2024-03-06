@@ -6,7 +6,7 @@ const editButton = document.querySelector(".profile__edit");
 const photoContainer = document.querySelector(".photo-grid");
 const photoTemplate = document.querySelector("#photo-grid-template");
 
-// popap
+// popup
 const popupProfile = document.querySelector(".popup_type_profile");
 const popupPhoto = document.querySelector(".popup_type_photo");
 const closeProfileButton = document.querySelector(".popup_close");
@@ -48,6 +48,9 @@ function addPhoto(name, link) {
 
   deleteButton.addEventListener("click", handleDeletePhoto);
   likeButton.addEventListener("click", handleLike);
+  photoSrc.addEventListener("click", () => {
+    handleModal(name, link);
+  });
 
   return newPhoto;
 }
@@ -58,10 +61,24 @@ initialCards.forEach((item) => {
   photoContainer.append(newCard);
 });
 
+// Удаление фото
 function handleDeletePhoto(e) {
   e.target.closest(".photo-grid__item").remove();
 }
 
+// Обработчик лайков
 function handleLike(e) {
   e.target.classList.toggle("photo-grid__like_active");
+}
+
+// Модальное окно для просмотра фотографий
+function handleModal(name, link) {
+  openPopup(popupModal);
+  modalTitle.textContent = name;
+  modalSrc.alt = name;
+  modalSrc.src = link;
+}
+
+function openPopup(popupName) {
+  popupName.classList.add("popup_opened");
 }

@@ -140,19 +140,6 @@ function handleOverlayClick(evt) {
   }
 }
 
-// включение валидации вызовом enableValidation
-// все настройки передаются при вызове
-const config = {
-  formSelector: ".form",
-  inputSelector: ".form__input",
-  submitButtonSelector: ".form__submit",
-  inactiveButtonClass: "form__submit_disabled",
-  inputErrorClass: "form__input_type_error",
-  errorClass: "form__input-error_active",
-};
-
-// enableValidation(config);
-
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formProfile.addEventListener("submit", handleProfileFormSubmit);
